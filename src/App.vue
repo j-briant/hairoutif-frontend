@@ -3,7 +3,7 @@
     <IntroOverlay/>
     <Overlay/>
     <nav class="main-nav">
-      <a title="logo" class="logo" href="/"><img src="../dist/img/logo.png"></a>
+      <a title="logo" class="logo" href="/"><img src="@/assets/logo.png"></a>
       <a class="title" title="hairoutif" href="/"><span title="hairoutif">HAIROUTIF</span></a>
       <PanelButton title="menu"/>
     </nav>
