@@ -8,7 +8,7 @@ import L from 'leaflet'
 import 'leaflet.markercluster/dist/leaflet.markercluster-src.js'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
-import { ApiService } from '@/components/ApiService'
+import { store, utils } from '@/store'
 import { bus } from '@/main'
 
 export default {
@@ -16,21 +16,12 @@ export default {
   data () {
     return {
       mapDiv: null,
-      api: null,
       layers: {},
       center: [47, 2.4],
       zoom: 6
     }
   },
   methods: {
-    initializeApi: function () {
-      // Initialize API service
-      if (window.location.hostname === 'localhost') {
-        this.api = new ApiService('http://localhost:5000/')
-      } else {
-        this.api = new ApiService('http://localhost:5000/')
-      }
-    },
 
     setupLeafletMap: function () {
       this.mapDiv = L.map('mapContainer', {
@@ -75,14 +66,14 @@ export default {
     },
 
     async loadMapData () {
-      const geojson = await this.api.getMarkers()
+      const geojson = await store.api.getMarkers()
       this.addMarkers(geojson, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Circle-icons-scissors.svg/1024px-Circle-icons-scissors.svg.png')
       this.mapDiv.addLayer(this.layers.markerGroup)
     }
   },
 
   mounted () {
-    this.initializeApi()
+    utils.initializeApi()
     this.setupLeafletMap()
     this.loadMapData()
   },
