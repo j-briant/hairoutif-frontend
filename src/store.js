@@ -40,7 +40,7 @@ export const utils = {
     if (window.location.hostname === 'localhost') {
       store.api = new ApiService('http://localhost:5000/')
     } else {
-      store.api = new ApiService('https://hairoutif-backend.herokuapp.com/')
+      store.api = new ApiService('https://hairoutif-backend.herokuapp.com/') || new ApiService('https://hairoutif-back.herokuapp.com/')
     }
   }
 }
