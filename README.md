@@ -1,4 +1,4 @@
-# quoifeur-app
+# hairoutif-frontend
 
 # About
 This is the frontend part of the world famous hairoutif project. Really useful and amazing and incredible. Find the backend at https://github.com/j-briant/hairoutif-backend.
